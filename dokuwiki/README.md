@@ -1,1 +1,4 @@
-docker run -d nickrobinson/dokuwiki --mount source=~/Sync/wiki-data,destination=/var/dokuwiki-storage
+# Run
+```
+docker run -d -v ~/Sync/wiki-data:/var/dokuwiki-storage -p 8080:80 nickrobinson/dokuwiki
+```
