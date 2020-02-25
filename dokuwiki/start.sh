@@ -38,6 +38,12 @@ else
   ln -s /var/dokuwiki-storage/conf/ /var/www/conf
 fi
 
+# Setup Plugins
+cat /plugins.txt | xargs -I {} wget {} -O master.zip && unzip master.zip -d /var/www/lib/plugins/ && rm master.zip
+
+for file in /var/www/lib/plugins/*-master; do
+    mv -- "$file" "${file%%-master}"
+done
 
 chown -R nobody /var/www
 chown -R nobody /var/dokuwiki-storage
@@ -45,4 +51,3 @@ chown -R nobody /var/dokuwiki-storage
 su -s /bin/sh nobody -c 'php7 /var/www/bin/indexer.php -c'
 
 exec /usr/bin/supervisord -c /etc/supervisord.conf
-
