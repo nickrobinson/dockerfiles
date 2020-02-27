@@ -1,3 +1,3 @@
 https://github.com/cosmocode/edittable/archive/master.zip
-https://github.com/splitbrain/dokuwiki-plugin-vshare/zipball/master
+https://github.com/splitbrain/dokuwiki-plugin-vshare/archive/master.zip
 https://github.com/samuelet/indexmenu/archive/master.zip
