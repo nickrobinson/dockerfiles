@@ -39,11 +39,12 @@ else
 fi
 
 # Setup Plugins
-cat /plugins.txt | xargs -I {} wget {} -O master.zip && unzip master.zip -d /var/www/lib/plugins/ && rm master.zip
-
-for file in /var/www/lib/plugins/*-master; do
-    mv -- "$file" "${file%%-master}"
-done
+while IFS=, read -r url name; do
+   wget $url -O master.zip
+   mkdir /var/www/lib/plugins/$name
+   bsdtar -C /var/www/lib/plugins/$name -xf master.zip -s'|[^/]*/||'
+   rm master.zip
+done <plugins.txt
 
 chown -R nobody /var/www
 chown -R nobody /var/dokuwiki-storage

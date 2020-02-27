@@ -6,7 +6,7 @@ ENV DOKUWIKI_VERSION 2018-04-22b
 ENV MD5_CHECKSUM 59530f0bad33a5069e1ae7dadbac090f
 
 RUN apk --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/community/ add \
-    php7 php7-fpm php7-gd php7-session php7-xml php7-json nginx supervisor curl tar
+    php7 php7-fpm php7-gd php7-session php7-xml php7-json nginx supervisor curl tar libarchive-tools
 
 RUN mkdir -p /run/nginx && \
     mkdir -p /var/www /var/dokuwiki-storage/data && \
